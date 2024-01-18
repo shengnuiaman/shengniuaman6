@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+		<meta charset="utf-8" />
+		<style type="text/css">
+			html,body{
+				background-color:#00ffff;
+				width: 100%;
+				height: 100%;
+			}
+			#flex-container{
+				
+				display:flex;
+				width: 100%;
+				height: 100%;
+				justify-content: center;
+				flex-wrap: wrap;
+			}
+			.titletext{
+				font-size: 80px;
+				color:black;
+				text-align: center;
+				height: 100px;
+				
+				
+			}
+			.image{
+				width: 30%;
+	            
+				margin-top: 80px;
+
+			}
+			.text{
+				font-size: 40px;
+				color: black;
+				flex-wrap: wrap;
+			}
+			.star {
+			    position: absolute;
+			    color: white;
+			    font-size: 24px;
+			}
+		</style>
+		<title></title>
+		<script src="js/jquery-3.7.1.js"></script>
+		<script type="text/javascript">
+          $(document).ready(function () {
+              var starCount = 100;
+              var $starfield = $('#flex-container');
+          
+              function createStar() {
+                  var $star = $('<div>').addClass('star').html('&#9733;'); // HTML entity for ★
+                  return $star;
+              }
+          
+              function placeStar($star) {
+                  var xPos = Math.floor(Math.random() * $starfield.width());
+                  var yPos = Math.floor(Math.random() * $starfield.height());
+                  $star.css({
+                      left: xPos + 'px',
+                      top: yPos + 'px',
+                      'font-size': Math.random() * 20 + 10 + 'px', // Randomize star size
+                      opacity: 0
+                  });
+              }
+          
+              function blinkStar($star) {
+                  $star.animate({opacity: Math.random()}, 500, 'swing', function () {
+                      setTimeout(function () {
+                          blinkStar($star);
+                      }, Math.random() * 2000);
+                  });
+              }
+          
+              function init() {
+                  for (var i = 0; i < starCount; i++) {
+                      var $star = createStar();
+                      placeStar($star);
+                      blinkStar($star);
+                      $starfield.append($star);
+                  }
+              }
+          
+              init();
+          });
+		</script>
+	</head>
+	<body>
+		<div class="titletext" id="to">
+			智能停车
+		</div>
+		<div id="flex-container">
+			
+			
+				<a   ><img src="https://cmsimg01.71360.com/data/20191119/11u2594/public/2019111913541761387.jpg"></a>
+			<div id="ti" class="text" >
+              智能停车场管理系统是现代化停车场车辆收费及设备自动化管理的统称。
+			  是将停车场完全置于计算机统一管理下的高科技机电一体化产品。
+			  他以感应卡IC卡或ID卡（最新技术有两卡兼容的停车场）为载体，通过智能设备使感应卡记录车辆及持卡人进出的相关信息，同时对其信息加以运算、传送并通过字符显示、语音播报等人机界面转化成人工能够辨别和判断的信号，从而实现计时收费、车辆管理等目的。
+			</div>
+			<br><br />
+		</div>
+		
+	</body>
+</html>
